@@ -10,6 +10,7 @@ tf.reset_default_graph()
 
 # W1 6000 * 500 b:500  -> h
 batch_num = 128
+input_num=6000
 hidden_num = 500
 step_num = 8
 elem_num = 1
@@ -45,10 +46,17 @@ def autoEncoder(inputArray):
         print('input :', input_[0, :, :].flatten())
         print('output :', output_[0, :, :].flatten())
 
+def autoEncode(inputArray):
+    W1= np.random.random((input_num,hidden_num)) #初始值
+    b1=np.random.random(hidden_num)
+    W2= np.random.random((input_num,hidden_num)) #初始值
+    b1=np.random.random(hidden_num)
+    for i in range(iteration):
+        hiddenVector=W1*inputArray + b1
 
 
 
-# 先只考虑文本内容，自编码文章表示
+# 先只考虑文本内容
 def getWordFromNews():
     pattern =r'^(\d+):::(.*?):::(\d+)$'
     newsDict=[]
@@ -79,7 +87,7 @@ def getVector():
             articleVector.append(freqDict.get(word,0)) # 已获得向量；
         print(articleVector)
         '''
-        将6000维 压缩到 500 维 ~~ 词袋 
+        将6000维 压缩到 500 维 ~~ 词袋
         '''
         hiddenVector=autoEncode(articleVector)
         break
@@ -94,4 +102,5 @@ def wordBag(strs):
         vector[word]=vector.get(word,0)+1
     return vector
 if __name__ == '__main__':
-    getVector()
+    r=np.random.random(3)
+    print(r)
