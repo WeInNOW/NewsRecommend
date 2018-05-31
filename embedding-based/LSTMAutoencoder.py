@@ -79,8 +79,7 @@ class LSTMAutoencoder(object):
                 for step in range(len(inputs)):
                     if step > 0:
                         vs.reuse_variables()
-                    (dec_input_, dec_state) = \
-                        self._dec_cell(dec_input_, dec_state)
+                    (dec_input_, dec_state) = self._dec_cell(dec_input_, dec_state)
                     dec_input_ = tf.matmul(dec_input_, dec_weight_) \
                         + dec_bias_
                     dec_outputs.append(dec_input_)
