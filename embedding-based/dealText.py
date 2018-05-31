@@ -52,7 +52,7 @@ def autoEncode(inputArray):
     W2= np.random.random((input_num,hidden_num)) #初始值
     b1=np.random.random(hidden_num)
     for i in range(iteration):
-        hiddenVector=W1*inputArray + b1
+        hiddenVector=W1*inputArray +  b1
 
 
 
